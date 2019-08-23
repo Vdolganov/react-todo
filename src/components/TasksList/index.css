@@ -1,0 +1,9 @@
+.tasks-list {
+    width: 100%;
+}
+
+.tasks-list-title {
+    padding: 20px 10px;
+    color: #282c34;
+    border-bottom: 1px solid black;
+}
