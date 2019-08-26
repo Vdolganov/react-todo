@@ -6,14 +6,12 @@ export const createDashboard = (newTodo) => {
          const firestore = getFirestore();
          firestore.collection('todos').add(
              {
-                 description: 'test',
-                 tasks: [],
-                 title: 'test',
+                 ...newTodo,  tasks: [],
              }
          ).then((dashboard) => {
              dispatch({
-                 type: 'ADD_DASHBOARD',
-                 dashboard: dashboard
+                 type: 'SHOW_MODAL',
+                 show: false
              });
          }).catch((error) => {
              dispatch({

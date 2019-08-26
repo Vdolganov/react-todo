@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .task-item.active {
@@ -17,6 +17,15 @@
 
 .task-item-text {
     width: 80%;
+}
+
+.task-item-text h5 {
+    font-size: 30px;
+    color: #282c34;
+}
+
+.task-item-text p {
+
 }
 
 .checkbox input {

@@ -6,7 +6,7 @@ import { compose } from 'redux'
 import {chooseTodo} from "../../store/actions/currentTodoActions";
 import {showModalAction} from "../../store/actions/dashboardActions";
 
-const TodoNav = ({dashboard, chooseTodo, showModalAction}) => {
+const TodoNav = ({dashboard, chooseTodo, showModalAction, currentTodo}) => {
     const todoChoose = (todo) => {
         chooseTodo(todo)
     };
@@ -23,9 +23,9 @@ const TodoNav = ({dashboard, chooseTodo, showModalAction}) => {
             </div>
             <ul className="list-container">
                 {dashboard.map(el => (
-                    <li className="list-item" onClick={() => {todoChoose(el)}}>
+                    <li className={['list-item' + (currentTodo.id && currentTodo.id == el.id ? ' active' : '')]} onClick={() => {todoChoose(el)}}>
                         <h3>{el.title}</h3>
-                        <p> {el.description} </p>
+                        <p> {el.description}, {el && el.tasks && <span>tasks:{el.tasks.length}</span>} </p>
                     </li>
                 ))}
             </ul>
@@ -41,9 +41,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    console.log(state, 'state');
     return {
-        dashboard: state.firestore.ordered.todos || state.dashboard.todos
+        dashboard: state.firestore.ordered.todos || state.dashboard.todos,
+        currentTodo: state.tasks.currentTodo
     }
 };
 

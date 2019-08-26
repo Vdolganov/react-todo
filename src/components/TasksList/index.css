@@ -3,7 +3,10 @@
 }
 
 .tasks-list-title {
-    padding: 20px 10px;
-    color: #282c34;
+    padding: 10px 10px;
+    color: white;
+    background: #000000;
     border-bottom: 1px solid black;
+    font-size: 18px;
+    text-align: center;
 }

@@ -12,7 +12,7 @@ const AddTodo = (props) => {
             props.onVisChange(false)
         }
         e.stopPropagation();
-        e.preventDefault();
+
     };
 
     const closeListener =
@@ -22,10 +22,25 @@ const AddTodo = (props) => {
             }
         });
 
+    const addNewTodo = (e) => {
+        e.persist();
+        e.preventDefault();
+        let values = {};
+        for (let item of e.target) {
+            if(item.name === 'title') {
+                values.title = item.value;
+            }
+            else if(item.name === 'description') {
+                values.description = item.value;
+            }
+        }
+        props.createDashboard(values);
+        console.log(values, props)
+    };
 
 return(
     <div className="add-todo-modal" onClick={clickOutside}>
-        <form className="add-todo-form">
+        <form className="add-todo-form" onSubmit={addNewTodo}>
             <label>
                 Add title <br/>
                 <input type="text" name="title" className="add-todo-input"/>
@@ -35,8 +50,8 @@ return(
                 <textarea name="description" className="add-todo-textarea"/>
             </label>
             <div>
-                <button  className="new-todo-button mr-10">Save</button>
-                <button className="new-todo-button-cancel" onClick={(e) => {clickOutside(e)}}>Cancel</button>
+                <button type="submit" className="new-todo-button mr-10"> Save </button>
+                <button className="new-todo-button-cancel">Cancel</button>
             </div>
         </form>
     </div>

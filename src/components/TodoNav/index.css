@@ -33,3 +33,6 @@
     padding: 10px;
 }
 
+.list-item.active {
+    background: #0cb44d;;
+}
