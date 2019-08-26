@@ -14,7 +14,7 @@ const TasksList = ({tasks}) => {
                 <h1> {tasks.title} </h1>
             </div>
             {tasks.tasks.map(el => (
-                <TaskItem task={el} changeState = {taskDone1}/>
+                <TaskItem task={el} key={el.id} changeState = {taskDone1}/>
             ))}
         </div>
     )

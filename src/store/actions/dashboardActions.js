@@ -1,7 +1,7 @@
 import {getFirebase} from "react-redux-firebase";
 import {getFirestore} from "redux-firestore";
 
-export const createDashboard = () => {
+export const createDashboard = (newTodo) => {
      return (dispatch, getState, {getFirebase, getFirestore}) => {
          const firestore = getFirestore();
          firestore.collection('todos').add(
@@ -22,6 +22,15 @@ export const createDashboard = () => {
              })
          })
      }
+};
+
+export const showModalAction = (show) => {
+    return (dispatch, getState) => {
+        dispatch({
+            type: 'SHOW_MODAL',
+            show: show
+        });
+    }
 };
 
 
